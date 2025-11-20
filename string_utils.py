@@ -1,7 +1,7 @@
 
 
 
-def split_before_uppercases(formula):
+def split_before_uppercases(formula): 
     pass  # replace the pass with your code
 
 def split_at_digit(formula):
