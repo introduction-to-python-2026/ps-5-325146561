@@ -1,5 +1,5 @@
 # Add the import statements for necessary sympy functions here
-
+from sympy import symbols, Eq, solve as sympy_solve
 
 ELEMENTS = [
     'H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne',
@@ -31,8 +31,8 @@ def build_equations(reactant_atoms, product_atoms):
     Example: For H2 + O2 -> H2O, returns equations [2*a0 - 2*b0, a1 - b0]."""
     ## coefficients ##
     reactant_coefficients = list(symbols(f'a0:{len(reactant_atoms)}'))
-    product_coefficients = list(symbols(f'b0:{len(product_atoms)}')) 
-    # product_coefficients = product_coefficients[:-1] + [1] # Ensure the last coefficient is 1
+    product_coefficients = list(symbols(f'b0:{len(product_atoms)}'))
+    product_coefficients = product_coefficients[:-1] + [1]
 
     ## equations ##
     equations = []
@@ -42,7 +42,7 @@ def build_equations(reactant_atoms, product_atoms):
         if lhs != 0 or rhs != 0:
             equations.append(Eq(lhs, rhs))
 
-    return equations, reactant_coefficients + product_coefficients
+    return equations, reactant_coefficients + product_coefficients[:-1]
 
 
 def my_solve(equations, coefficients):
