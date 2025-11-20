@@ -1,5 +1,5 @@
 
-def split_before_uppercase(formula): 
+def split_before_uppercases(formula): 
     if formula == "":
         return []
     
