@@ -1,7 +1,6 @@
 # Add the import statements for functions from string_utils.py and equation_utils.py here
-from string_utils import split_before_uppercases, split_at_digit
+from string_utils import split_before_uppercases, split_at_digit, count_atoms_in_molecule
 from equation_utils import (
-    count_atoms_in_molecule,
     parse_chemical_reaction,
     count_atoms_in_reaction,
     build_equations
