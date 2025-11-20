@@ -1,5 +1,5 @@
 # Add the import statements for necessary sympy functions here
-from sympy import symbols, Eq, solve as sympy_solve
+from string_utils import split_before_uppercase, Eq, split_at_digit
 
 ELEMENTS = [
     'H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne',
