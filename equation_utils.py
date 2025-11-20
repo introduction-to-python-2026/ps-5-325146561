@@ -32,7 +32,7 @@ def build_equations(reactant_atoms, product_atoms):
     ## coefficients ##
     reactant_coefficients = list(symbols(f'a0:{len(reactant_atoms)}'))
     product_coefficients = list(symbols(f'b0:{len(product_atoms)}')) 
-    product_coefficients = product_coefficients[:-1] + [1] # Ensure the last coefficient is 1
+    # product_coefficients = product_coefficients[:-1] + [1] # Ensure the last coefficient is 1
 
     ## equations ##
     equations = []
@@ -42,20 +42,25 @@ def build_equations(reactant_atoms, product_atoms):
         if lhs != 0 or rhs != 0:
             equations.append(Eq(lhs, rhs))
 
-    return equations, reactant_coefficients + product_coefficients[:-1]
+    return equations, reactant_coefficients + product_coefficients
 
 
 def my_solve(equations, coefficients):
     """Solves the system of equations for the coefficients of the reaction.  
     Example: For equations [2*a0 - 2*b0, a1 - b0], returns [1.0, 1.0]."""
+
     solution = sympy_solve(equations, coefficients)
 
-    if len(solution) == len(coefficients):
-        coefficient_values = list()
-        for coefficient in coefficients:
-            coefficient_values.append(float(solution[coefficient]))
-        return coefficient_values
+    # sympy_solve לפעמים מחזיר רשימה של פתרון יחיד
+    if isinstance(solution, list):
+        solution = solution[0]
 
+    result = []
+    for coeff in coefficients:
+        # החזרת תוצאה רציונלית ולא float
+        result.append(solution[coeff])
+
+    return result
 
 
 
