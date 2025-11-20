@@ -1,7 +1,7 @@
 
 
 
-def split_before_uppercases(formula): 
+def split_before_uppercase(formula): 
     if formula == "":
         return []
     
@@ -40,7 +40,7 @@ def count_atoms_in_molecule(molecular_formula):
     # Step 1: Initialize an empty dictionary to store atom counts
     atoms = {}
 
-    for atom in split_before_uppercases(molecular_formula):
+    for atom in split_before_uppercase(molecular_formula):
         atom_name, atom_count = split_at_digit(atom)
         
         # Step 2: Update the dictionary with the atom name and count
