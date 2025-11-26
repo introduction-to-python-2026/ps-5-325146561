@@ -17,18 +17,16 @@ def split_before_uppercases(formula):
     return parts
 
 def split_at_digit(formula):
-    digit_location = 1
-
-    for char in formula[1:]:
-        if char.isdigit():
-            break
+    digit_location = 0
+    while digit_location < len(formula) and not formula[digit_location].isdigit():
         digit_location += 1
-
     if digit_location == len(formula):
         return formula, 1
-
-    prefix = formula[:digit_location]
-    number = int(formula[digit_location:])
+    start_digit = digit_location
+    while digit_location < len(formula) and formula[digit_location].isdigit():
+        digit_location += 1
+    prefix = formula[:start_digit]
+    number = int(formula[start_digit:digit_location])
     return prefix, number
 
 def count_atoms_in_molecule(molecular_formula):
