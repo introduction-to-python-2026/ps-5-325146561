@@ -2,6 +2,7 @@
 from string_utils import split_before_uppercases, split_at_digit, count_atoms_in_molecule
 from equation_utils import (
     generate_equation_for_element,
+    parse_chemical_reaction
     build_equations,
     my_solve
 )
