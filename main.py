@@ -13,12 +13,14 @@ def balance_reaction(reaction): #"Fe2O3 + H2 -> Fe + H2O"
     product_atoms = count_atoms_in_reaction(products)
 
     equations, coefficients = build_equations(reactant_atoms, product_atoms)
-    raw = my_solve(equations, coefficients)
+    coeffients = my_solve(equations, coefficients) + [1]
+    return coeffients
+    # raw = my_solve(equations, coefficients)
 
     # האחרון הוא ה־b האחרון (לפי build_equations החדש)
     last = raw[-1]
 
-    normalized = [coef / last for coef in raw]
+    # normalized = [coef / last for coef in raw]
 
-    return normalized
+    # return normalized
 
