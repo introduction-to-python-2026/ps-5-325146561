@@ -4,6 +4,7 @@ from equation_utils import (
     generate_equation_for_element,
     parse_chemical_reaction
     build_equations,
+    count_atoms_in_reaction
     my_solve
 )
 
