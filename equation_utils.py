@@ -45,23 +45,17 @@ def build_equations(reactant_atoms, product_atoms):
     return equations, reactant_coefficients + product_coefficients[:-1]
 
 
+
 def my_solve(equations, coefficients):
     """Solves the system of equations for the coefficients of the reaction.  
     Example: For equations [2*a0 - 2*b0, a1 - b0], returns [1.0, 1.0]."""
-
     solution = sympy_solve(equations, coefficients)
 
-    # sympy_solve לפעמים מחזיר רשימה של פתרון יחיד
-    if isinstance(solution, list):
-        solution = solution[0]
-
-    result = []
-    for coeff in coefficients:
-        # החזרת תוצאה רציונלית ולא float
-        result.append(solution[coeff])
-
-    return result
-
+    if len(solution) == len(coefficients):
+        coefficient_values = list()
+        for coefficient in coefficients:
+            coefficient_values.append(float(solution[coefficient]))
+        return coefficient_values
 
 
 
